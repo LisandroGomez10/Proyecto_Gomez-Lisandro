@@ -1,0 +1,60 @@
+CRITICAL - 2024-05-14 23:22:01 --> Maximum execution time of 120 seconds exceeded
+in SYSTEMPATH\Debug\Timer.php on line 148.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+INFO - 2024-05-14 23:31:07 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-14 23:36:13 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2024-05-14 23:36:46 --> Error connecting to the database: mysqli_sql_exception: Access denied for user ''@'localhost' (using password: NO) in D:\Xampp\htdocs\proyecto_fleitas_leonardo\system\Database\MySQLi\Connection.php:174
+Stack trace:
+#0 D:\Xampp\htdocs\proyecto_fleitas_leonardo\system\Database\MySQLi\Connection.php(174): mysqli->real_connect('localhost', '', '', '', 3306, '', 0)
+#1 D:\Xampp\htdocs\proyecto_fleitas_leonardo\system\Database\BaseConnection.php(391): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#2 D:\Xampp\htdocs\proyecto_fleitas_leonardo\system\Database\BaseConnection.php(573): CodeIgniter\Database\BaseConnection->initialize()
+#3 D:\Xampp\htdocs\proyecto_fleitas_leonardo\system\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT 1\nFROM `...', Array, false)
+#4 D:\Xampp\htdocs\proyecto_fleitas_leonardo\system\Validation\StrictRules\Rules.php(206): CodeIgniter\Database\BaseBuilder->get()
+#5 D:\Xampp\htdocs\proyecto_fleitas_leonardo\system\Validation\Validation.php(312): CodeIgniter\Validation\StrictRules\Rules->is_unique('leonardofsirota...', 'email', Array, NULL, 'email')
+#6 D:\Xampp\htdocs\proyecto_fleitas_leonardo\system\Validation\Validation.php(170): CodeIgniter\Validation\Validation->processRules('email', 'email', 'leonardofsirota...', Array, Array)
+#7 D:\Xampp\htdocs\proyecto_fleitas_leonardo\system\Controller.php(140): CodeIgniter\Validation\Validation->run()
+#8 D:\Xampp\htdocs\proyecto_fleitas_leonardo\app\Controllers\usuario_controller.php(24): CodeIgniter\Controller->validate(Array)
+#9 D:\Xampp\htdocs\proyecto_fleitas_leonardo\system\CodeIgniter.php(934): App\Controllers\usuario_controller->formValidation()
+#10 D:\Xampp\htdocs\proyecto_fleitas_leonardo\system\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\usuario_controller))
+#11 D:\Xampp\htdocs\proyecto_fleitas_leonardo\system\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#12 D:\Xampp\htdocs\proyecto_fleitas_leonardo\index.php(67): CodeIgniter\CodeIgniter->run()
+#13 {main}
+
+Next CodeIgniter\Database\Exceptions\DatabaseException: Access denied for user ''@'localhost' (using password: NO) in D:\Xampp\htdocs\proyecto_fleitas_leonardo\system\Database\MySQLi\Connection.php:218
+Stack trace:
+#0 D:\Xampp\htdocs\proyecto_fleitas_leonardo\system\Database\BaseConnection.php(391): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#1 D:\Xampp\htdocs\proyecto_fleitas_leonardo\system\Database\BaseConnection.php(573): CodeIgniter\Database\BaseConnection->initialize()
+#2 D:\Xampp\htdocs\proyecto_fleitas_leonardo\system\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT 1\nFROM `...', Array, false)
+#3 D:\Xampp\htdocs\proyecto_fleitas_leonardo\system\Validation\StrictRules\Rules.php(206): CodeIgniter\Database\BaseBuilder->get()
+#4 D:\Xampp\htdocs\proyecto_fleitas_leonardo\system\Validation\Validation.php(312): CodeIgniter\Validation\StrictRules\Rules->is_unique('leonardofsirota...', 'email', Array, NULL, 'email')
+#5 D:\Xampp\htdocs\proyecto_fleitas_leonardo\system\Validation\Validation.php(170): CodeIgniter\Validation\Validation->processRules('email', 'email', 'leonardofsirota...', Array, Array)
+#6 D:\Xampp\htdocs\proyecto_fleitas_leonardo\system\Controller.php(140): CodeIgniter\Validation\Validation->run()
+#7 D:\Xampp\htdocs\proyecto_fleitas_leonardo\app\Controllers\usuario_controller.php(24): CodeIgniter\Controller->validate(Array)
+#8 D:\Xampp\htdocs\proyecto_fleitas_leonardo\system\CodeIgniter.php(934): App\Controllers\usuario_controller->formValidation()
+#9 D:\Xampp\htdocs\proyecto_fleitas_leonardo\system\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\usuario_controller))
+#10 D:\Xampp\htdocs\proyecto_fleitas_leonardo\system\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 D:\Xampp\htdocs\proyecto_fleitas_leonardo\index.php(67): CodeIgniter\CodeIgniter->run()
+#12 {main}
+CRITICAL - 2024-05-14 23:36:46 --> Unable to connect to the database.
+Main connection [MySQLi]: Access denied for user ''@'localhost' (using password: NO)
+in SYSTEMPATH\Database\BaseConnection.php on line 427.
+ 1 SYSTEMPATH\Database\BaseConnection.php(573): CodeIgniter\Database\BaseConnection->initialize()
+ 2 SYSTEMPATH\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT 1
+FROM `usuarios`
+WHERE `email` = :email:
+ LIMIT 1', [...], false)
+ 3 SYSTEMPATH\Validation\StrictRules\Rules.php(206): CodeIgniter\Database\BaseBuilder->get()
+ 4 SYSTEMPATH\Validation\Validation.php(312): CodeIgniter\Validation\StrictRules\Rules->is_unique('leonardofsirota@gmail.com', 'email', [...], null, 'email')
+ 5 SYSTEMPATH\Validation\Validation.php(170): CodeIgniter\Validation\Validation->processRules('email', 'email', 'leonardofsirota@gmail.com', [...], [...])
+ 6 SYSTEMPATH\Controller.php(140): CodeIgniter\Validation\Validation->run()
+ 7 APPPATH\Controllers\usuario_controller.php(24): CodeIgniter\Controller->validate([...])
+ 8 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\usuario_controller->formValidation()
+ 9 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\usuario_controller))
+10 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+INFO - 2024-05-14 23:39:01 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-14 23:39:19 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-14 23:39:19 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-14 23:41:23 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-14 23:42:08 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-14 23:42:15 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
