@@ -16,7 +16,7 @@
   <div class ="card-body justify-content-center" media="(max-width:768px)">
       <div class="form">
         <label for="exampleFormControlInput1" class="form-label">Nombre</label>
-        <input name="nombre" type="text"  class="form-control" placeholder="ingresa tu nombre" >
+        <input name="nombre" type="text"  class="form-control" placeholder="Ingresa tu nombre" >
        <!-- Error -->
           <?php if($validation->getError('nombre')) {?>
               <div class='alert alert-danger mt-2'>
@@ -26,7 +26,7 @@
       </div>
       <div class="mb-3">
         <label for="exampleFormControlTextarea1" class="form-label">Apellido</label>
-         <input type="text" name="apellido"class="form-control" placeholder="apellido" >
+         <input type="text" name="apellido"class="form-control" placeholder="Apellido" >
          <!-- Error -->
           <?php if($validation->getError('apellido')) {?>
               <div class='alert alert-danger mt-2'>
@@ -36,7 +36,7 @@
       </div>
       <div class="mb-3">
            <label for="exampleFormControlInput1" class="form-label">email</label>
-        <input name="email"  type="femail" class="form-control"  placeholder="correo@algo.com" >
+        <input name="email"  type="femail" class="form-control"  placeholder="Correo@algo.com" >
          <!-- Error -->
           <?php if($validation->getError('email')) {?>
               <div class='alert alert-danger mt-2'>
@@ -46,7 +46,7 @@
       </div>
          <div class="mb-3">
        <label for="exampleFormControlInput1" class="form-label">Usuario</label>
-        <input  tyupe="text" name="usuario" class="form-control" placeholder="usuario">
+        <input  tyupe="text" name="usuario" class="form-control" placeholder="Usuario">
         <!-- Error -->
           <?php if($validation->getError('usuario')) {?>
               <div class='alert alert-danger mt-2'>
@@ -57,7 +57,7 @@
       
       <div class="mb-3">
         <label for="exampleFormControlInput1" class="form-label">Password</label>
-        <input name="pass" type="password" class="form-control"  placeholder="password">
+        <input name="pass" type="password" class="form-control"  placeholder="Password">
         <!-- Error -->
           <?php if($validation->getError('pass')) {?>
               <div class='alert alert-danger mt-2'>
@@ -65,9 +65,9 @@
               </div>
           <?php }?>
        </div>
-                <input type="submit" value="guardar" class="btn btn-success">
+                <input type="submit" value="Guardar" class="btn btn-success">
               <a href="<?php echo base_url('registro'); ?>" class="btn btn-danger">Cancelar</a>
-                 <input type="reset" value="borrar" class="btn btn-secondary" onclick="borrarTextArea()">
+                 <input type="reset" value="Borrar" class="btn btn-secondary" onclick="borrarTextArea()">
             </div>
     </form>
        

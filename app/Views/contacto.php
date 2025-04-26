@@ -35,23 +35,34 @@
 
         <div class="row" style="text-align: center;">
             <p> <i class="bi bi-telephone"> <img src="assets/icons/telephone.svg" alt="Phone"> </i> +54-3794-403829 </p>
-            <p> <i class="bi bi-envelope-at"> <img src="assets/icons/envelope-at.svg" alt="Mail"> </i> leonardofsirota@gmail.com </p>
+            <p> <i class="bi bi-envelope-at"> <img src="assets/icons/envelope-at.svg" alt="Mail"> </i>leonardofsirota@gmail.com </p>
+            <p> <i class="bi bi-telephone"> <img src="assets/icons/telephone.svg" alt="Phone"> </i> +54-3795-074605</p>
+            <p> <i class="bi bi-envelope-at"> <img src="assets/icons/envelope-at.svg" alt="Mail"> </i>lisandroygomezhertler.99@gmail.com</p>
+
         </div>        
 
-        <div class="contactoTitulos row">
-            <h2 style="text-align: center;"> TITULAR DE LA EMPRESA </h2>
+        <div class="container text-center my-5">
+    <div class="row">
+        <div class="col">
+            <h2 class="fw-bold">TITULARES DE LA EMPRESA</h2>
+        </div>
+    </div>
+
+    <div class="row g-4 justify-content-center align-items-center">
+        <div class="col-md-4">
+            <img src="assets/img/self.jpg" class="img-fluid rounded-circle" style="width: 200px;">
+            <h3 class="mt-3">Leonardo E. Fleitas Sirota</h3>
         </div>
 
-        <div class="row">
-            <div id="self">
-                <img src="assets/img/self.jpg" alt="...">
-            </div>
-            <br>
-            <div>
-                <h3 style="text-align: center;"> Leonardo E. Fleitas Sirota </h3>
-            </div>
+        <div class="col-md-4">
+            <img src="assets/img/Imagen_Lisandro.jpg" class="img-fluid rounded-circle" style="width: 200px;">
+            <h3 class="mt-3">Lisandro L. Gomez Hertler</h3>
         </div>
-        <br><br>
+    </div>
+</div>
+
+
+
         <div class="contactoTitulos row">
             <h2 style="text-align: center;"> ENVIANOS TU CONSULTA </h2>
         </div>
