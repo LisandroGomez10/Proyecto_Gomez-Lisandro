@@ -16,12 +16,12 @@
           
           <div class="col-12 mb-2">
             <label for="exampleFormControlInput1" class="form-label">Correo</label>
-            <input name="email" type="text" class="form-control"  placeholder="correo" >
+            <input name="email" type="text" class="form-control"  placeholder="Correo" >
            </div>
           
           <div class="col-12 mb-2">
             <label for="exampleFormControlInput1" class="form-label">Password</label>
-            <input name="pass" type="password"  class="form-control" placeholder="contraseña">
+            <input name="pass" type="password"  class="form-control" placeholder="Contraseña">
           </div>
           
           <input type="submit" value="Ingresar" class="btn btn-success">

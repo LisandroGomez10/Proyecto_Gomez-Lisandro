@@ -1,16 +1,15 @@
-<section id="quienesSomos" class="container-fluid d-flex flex-column min-vh-100">
+<section id="quienesSomos" class="container-fluid d-flex flex-column min-vh-100 p-4 shadow">
 
     <div class="flex-grow-1">
 
         <br>
 
-        <div id="quienesSomosImagen1" class="row">
+        <div id="quienesSomosImagen1" class="row shadow-lg rounded-2 p-4">
             <div class="col-md-4 col-sm-12">
-                <img src="assets/img/Fitness.jpg" alt="..." class="img-fluid rounded-2">
+                <img src="assets/img/Fitness.jpg" alt="..." class="img-fluid rounded-2 shadow-sm">
             </div>
 
             <div class="col-md-8 col-sm-12">
-
                 <div class="quienesSomosTitulos row">
                     <h2> SOBRE NOSOTROS </h2>
                 </div>
@@ -27,10 +26,9 @@
 
         <br><br>
 
-        <div id="quienesSomosImagen2" class="row">
+        <div id="quienesSomosImagen2" class="row shadow-lg rounded-2 p-4">
             
             <div class="col-md-8 col-sm-12">
-
                 <div class="quienesSomosTitulos row" style="padding-right: 2%;">
                     <h2> NUESTRA MISIÓN </h2>
                 </div>
@@ -46,19 +44,18 @@
             </div>
 
             <div class="col-md-4 col-sm-12" style="padding-left: 3%;">
-                <img src="assets/img/Mancuernas.jpg" alt="..." class="img-fluid rounded-2">
+                <img src="assets/img/Mancuernas.jpg" alt="..." class="img-fluid rounded-2 shadow-sm">
             </div>
         </div>
 
         <br><br>
 
-        <div id="quienesSomosImagen3" class="row">
+        <div id="quienesSomosImagen3" class="row shadow-lg rounded-2 p-4">
             <div class="col-md-4 col-sm-12">
-                <img src="assets/img/Fitness2.jpg" alt="..." class="img-fluid rounded-2">
+                <img src="assets/img/Fitness2.jpg" alt="..." class="img-fluid rounded-2 shadow-sm">
             </div>
 
             <div class="col-md-8 col-sm-12">
-
                 <div class="quienesSomosTitulos row">
                     <h2> NUESTRA VISIÓN </h2>
                 </div>
@@ -75,9 +72,9 @@
 
         <br><br>
 
-        <div class="col-12">
+        <div class="col-12 shadow-lg rounded-2 p-4">
             <div class="quienesSomosTitulos row" style="text-align: center;">
-                <h2> QUÉ OFRECEMOS </h2>
+                <h2> QUÉ OFRECEMOS</h2>
             </div>
 
             <p style="text-align: justify;">
@@ -91,11 +88,9 @@
             </p>
 
         </div>
-        
+    
     </div>
 
-    
-    <a href="index" style="text-align: center;"> Volver </a>
-    
+    <a href="index" style="text-align: center;">Volver</a>
 
 </section>
