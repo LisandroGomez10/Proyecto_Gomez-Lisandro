@@ -1,0 +1,31 @@
+.product-card {
+    margin-bottom: 20px;
+}
+
+.product-card .card-body {
+    padding: 15px;
+}
+
+.product-card .card-img-top {
+    height: 300px; /* Ajusta este valor según tus necesidades */
+    object-fit: cover; /* Mantiene la relación de aspecto de la imagen */
+}
+
+.product-card .card-footer {
+    background-color: #f8f9fa;
+    border-top: 1px solid #dee2e6;
+}
+
+.product-card .card-footer a {
+    display: block;
+    width: 100%;
+    text-align: center;
+    padding: 10px 0;
+    color: orange;
+    text-decoration: none;
+}
+
+.product-card .card-footer a:hover {
+    color: orangered;
+    text-decoration: none;
+}
