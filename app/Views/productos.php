@@ -16,14 +16,18 @@
                     <div class="card-body d-flex flex-column">
                         <h5 class="card-title"><?= esc($producto['nombre_prod']) ?></h5>
                         <p class="card-text">Precio: $<?= number_format($producto['precio_vta'], 2, ',', '.') ?></p>
-                        <form action="<?= site_url('carrito/agregar') ?>" method="post" class="mt-auto">
-                        <input type="hidden" name="id_producto" value="<?= esc($producto['id_producto']) ?>">
-                        <input type="hidden" name="qty" value="1">
-                        <input type="hidden" name="precio_vta" value="<?= esc($producto['precio_vta']) ?>">
-                        <input type="hidden" name="nombre_prod" value="<?= esc($producto['nombre_prod']) ?>">
-                        <button type="submit" class="btn btn-primary w-100">Agregar al Carrito</button>
-                    </form>
 
+                        <?php if (session()->has('id_usuario')): ?>
+                            <form action="<?= site_url('carrito/agregar') ?>" method="post" class="mt-auto">
+                                <input type="hidden" name="id_producto" value="<?= esc($producto['id_producto']) ?>">
+                                <input type="hidden" name="qty" value="1">
+                                <input type="hidden" name="precio_vta" value="<?= esc($producto['precio_vta']) ?>">
+                                <input type="hidden" name="nombre_prod" value="<?= esc($producto['nombre_prod']) ?>">
+                                <button type="submit" class="btn btn-primary w-100">Agregar al Carrito</button>
+                            </form>
+                        <?php else: ?>
+                            <a href="<?= site_url('login') ?>" class="btn btn-warning mt-auto w-100">Debes iniciar sesión</a>
+                        <?php endif; ?>
                     </div>
                 </div>
             </div>
@@ -32,9 +36,4 @@
 <?php else: ?>
     <p>No hay productos disponibles en este momento.</p>
 <?php endif; ?>
-
-<p class="mt-4">
-   <a href="<?= site_url('carrito/ver') ?>" class="btn btn-success">Ver Carrito (<?= $cart->totalItems() ?> ítems)</a>
-</p>
-
 <?= $this->endSection() ?>

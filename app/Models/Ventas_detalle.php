@@ -13,5 +13,5 @@ class Ventas_detalle extends Model
         'ventas_id','producto_id','cantidad','precio'
     ];
     protected $returnType = 'array';
-
 }
+

@@ -27,21 +27,4 @@ class ProductoController extends BaseController
             'cart' => $this->cart
         ]);
     }
-
-    // Agregar al carrito
-    public function agregar()
-    {
-        if ($this->request->getMethod() === 'post') {
-            $data = [
-                'id'      => $this->request->getPost('id_producto'),
-                'qty'     => 1,
-                'price'   => $this->request->getPost('precio_vta'),
-                'name'    => $this->request->getPost('nombre_prod'),
-            ];
-
-            $this->cart->insert($data);
-        }
-
-        return redirect()->to(site_url('carrito/ver'));
-    }
 }

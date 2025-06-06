@@ -20,7 +20,7 @@
                 <?php foreach ($cart->contents() as $item): ?>
                     <tr>
                         <td><?= esc($item['name']) ?></td>
-                        <td colspan="2"><strong>$<?= number_format($cart->total(), 2, ',', '.') ?></strong></td>
+                        <td colspan="1"><strong>$<?= number_format($cart->total(), 2, ',', '.') ?></strong></td>
                         <td>
                             <form action="<?= site_url('carrito/actualizar') ?>" method="post" class="d-inline">
                                 <input type="hidden" name="rowid" value="<?= esc($item['rowid']) ?>">
@@ -41,11 +41,10 @@
             <tfoot class="table-light">
                 <tr>
                     <td colspan="3" class="text-end"><strong>Total:</strong></td>
-                    <td colspan="2"><strong>$<?= number_format($cart->total(), 2, ',', '.') ?></strong></td>
+                    <td colspan="1"><strong>$<?= number_format($cart->total(), 2, ',', '.') ?></strong></td>
                 </tr>
             </tfoot>
         </table>
-
         <form action="<?= site_url('carrito/comprar') ?>" method="post" class="mt-3">
             <button type="submit" class="btn btn-success">Comprar</button>
         </form>

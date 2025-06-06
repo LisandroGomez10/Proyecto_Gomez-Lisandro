@@ -68,87 +68,76 @@ class Carrito extends BaseController
         return redirect()->to(site_url('carrito/ver'));
     }
 
-    public function comprar()
-    {
-        $cart = \Config\Services::cart();
-        $items = $cart->contents();
+public function comprar()
+{
+    $cart = \Config\Services::cart();
+    $items = $cart->contents();
 
-        if (empty($items)) {
-            return redirect()->to(site_url('productos'));
-        }
+    if (empty($items)) {
+        return redirect()->to(site_url('productos'));
+    }
 
-        $cabeceraModel = new Ventas_cabecera();
-        $detalleModel  = new Ventas_detalle();
+    $cabeceraModel = new Ventas_cabecera();
+    $detalleModel  = new Ventas_detalle();
 
-        $total = $cart->getTotal();
+    $total = $cart->total();
 
-        // ID del usuario (fijo 1 si no está logueado)
-        $idUsuario = session()->get('id_usuario') ?? 1;
+    $idUsuario = session()->get('id_usuario') ?? 1;
 
-        // Insertar en ventas_cabecera y obtener el ID generado
-        $ventaId = $cabeceraModel->insert([
-            'fecha'      => date('Y-m-d H:i:s'),
-            'usuario_id' => $idUsuario,
-            'total_venta'=> $total
-        ]);
+    $ventaId = $cabeceraModel->insert([
+        'fecha'       => date('Y-m-d H:i:s'),
+        'usuario_id'  => $idUsuario,
+        'total_venta' => $total
+    ]);
 
-        // El método insert() devuelve el ID insertado, sino usar insertID()
-        if (!$ventaId) {
-            $ventaId = $cabeceraModel->getInsertID();
-        }
+    if (!$ventaId) {
+        $ventaId = $cabeceraModel->getInsertID();
+    }
 
-        // Insertar cada ítem en ventas_detalle
-        foreach ($items as $item) {
-            $detalleModel->insert([
-                'ventas_id'   => $ventaId,
-                'producto_id' => $item['id'],
-                'cantidad'    => $item['qty'],
-                'precio'      => $item['price']
-            ]);
-        }
-
-        // Obtener detalle completo con nombre producto para la vista
-        $db = \Config\Database::connect();
-        $builder = $db->table('ventas_detalle');
-        $detalleVenta = $builder
-            ->select('ventas_detalle.*, productos.nombre_prod AS nombre_producto')
-            ->join('productos', 'productos.id_producto = ventas_detalle.producto_id')
-            ->where('ventas_id', $ventaId)
-            ->get()
-            ->getResultArray();
-
-        // Vaciar carrito
-        $cart->destroy();
-
-        // Pasar datos a la vista de confirmación de compra
-        return view('compras', [
-            'detalle_venta' => $detalleVenta,
-            'total_venta'   => $total
+    foreach ($items as $item) {
+        $detalleModel->insert([
+            'ventas_id'   => $ventaId,
+            'producto_id' => $item['id'],
+            'cantidad'    => $item['qty'],
+            'precio'      => $item['price']
         ]);
     }
 
+    $cart->destroy();
 
-    
-    public function misCompras()
-{
-    $idUsuario = session()->get('id_usuario') ?? 1; // Reemplazar por el ID de sesión real si tenés login
+    // Traer detalle compra nueva
+    $db = \Config\Database::connect();
+    $builder = $db->table('ventas_detalle');
+    $detalleCompraNueva = $builder
+        ->select('ventas_detalle.*, productos.nombre_prod AS nombre_producto')
+        ->join('productos', 'productos.id_producto = ventas_detalle.producto_id')
+        ->where('ventas_id', $ventaId)
+        ->get()
+        ->getResultArray();
 
-    $cabeceraModel = new \App\Models\Ventas_cabecera();
+    // Calcular total compra nueva (por seguridad)
+    $total_compra_nueva = 0;
+    foreach ($detalleCompraNueva as $item) {
+        $total_compra_nueva += $item['precio'] * $item['cantidad'];
+    }
 
-    $ventas = $cabeceraModel
+    // Traer todas las compras anteriores (excepto la nueva, si querés)
+    $ventasAnteriores = $cabeceraModel
         ->where('usuario_id', $idUsuario)
+        ->where('id !=', $ventaId)  // opcional: para no repetir la nueva
         ->orderBy('fecha', 'DESC')
         ->findAll();
 
     return view('compras', [
-        'ventas' => $ventas
+        'detalle_venta'    => $detalleCompraNueva,
+        'total_venta'      => $total_compra_nueva,
+        'ventas_anteriores' => $ventasAnteriores,
+        'venta_nueva_id'   => $ventaId
     ]);
 }
 
-    public function detalleCompra($id)
+public function detalleCompra($id)
 {
-    $detalleModel = new \App\Models\Ventas_detalle();
-
     $db = \Config\Database::connect();
     $builder = $db->table('ventas_detalle');
 
@@ -159,8 +148,30 @@ class Carrito extends BaseController
         ->get()
         ->getResultArray();
 
-    return view('detalle_compra_', [
-        'detalles' => $detalles
+    // Calcular total de la venta
+    $total_venta = 0;
+    foreach ($detalles as $item) {
+        $total_venta += $item['precio'] * $item['cantidad'];
+    }
+
+    return view('detalle_compra', [
+        'detalles'    => $detalles,
+        'total_venta' => $total_venta
+    ]);
+}
+
+public function misCompras()
+{
+    $idUsuario = session()->get('id_usuario') ?? 1;
+    $cabeceraModel = new Ventas_cabecera();
+
+    $ventas = $cabeceraModel
+        ->where('usuario_id', $idUsuario)
+        ->orderBy('fecha', 'DESC')
+        ->findAll();
+
+    return view('misCompras', [
+        'ventas' => $ventas
     ]);
 }
 

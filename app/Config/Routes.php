@@ -50,18 +50,23 @@ $routes->get('/logout', 'login_controller::logout');
 
 
 // ---------- CATÁLOGO ----------
-$routes->get('productos', 'ProductoController::index');                 // Muestra los productos
+$routes->get('productos', 'ProductoController::index');          // Muestra los productos
+
+
 
 // ---------- CARRITO ----------
 $routes->get('carrito/ver', 'Carrito::ver');                 // Ver carrito
 $routes->post('carrito/agregar', 'Carrito::agregar');        // Agregar producto al carrito
 $routes->post('carrito/actualizar', 'Carrito::actualizar');  // Actualizar cantidad
-$routes->post('carrito/eliminar', 'Carrito::eliminar');      // Eliminar producto
+$routes->post('carrito/eliminar', 'Carrito::eliminar');      // Eliminar producto del carrito
 $routes->post('carrito/comprar', 'Carrito::comprar');        // Finalizar compra
 
 // ---------- HISTORIAL DE COMPRAS ----------
-$routes->get('compras', 'Carrito::misCompras'); // o el método que quieras que muestre        
-$routes->get('carrito/detalle-compra/(:num)', 'Carrito::detalleCompra/$1'); // Detalle de una compra específica
+$routes->get('compras', 'Carrito::misCompras');  // Mostrar historial de compras
+$routes->get('carrito/detalle-compra/(:num)', 'Carrito::detalleCompra/$1');  // Ver detalle de una compra
+
+
+
 
 // ---------- RUTA POR DEFECTO (opcional) ----------
 //$routes->get('/', 'ProductoController::index'); // Home redirige al catálogo
