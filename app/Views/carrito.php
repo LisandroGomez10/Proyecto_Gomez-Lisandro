@@ -3,7 +3,7 @@
 <?= $this->section('contenido') ?>
 
 <div class="container text-center">
-    <h1 class="mb-4">Carrito de Compras</h1>
+    <h1 class="mb-4">Carrito Compras</h1>
 
     <?php if ($cart->totalItems() > 0): ?>
         <table class="table table-bordered table-striped mx-auto" style="max-width: 900px;">
