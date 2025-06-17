@@ -1,0 +1,49 @@
+#carouselExampleCaptions {
+    transform: scale(0.99); /* Reduce el tamaño en un 20% */
+    margin: 0 auto; /* Centra el carrusel horizontalmente */
+    display: block; /* Asegura que el carrusel se trate como un bloque para que el centrado funcione correctamente */
+}
+
+.carousel-caption h5 {
+    color: rgb(255, 145, 0);
+    text-shadow: 3px -3px 3px #000;
+    font-weight: bold;
+    font-size: 1.2em;     
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    text-align: center;
+}
+
+.carousel-caption p {
+    color: rgb(255, 145, 0);
+    text-shadow: 3px -3px 3px #000;
+    font-size: 1em; 
+    text-align: center;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+/* Asegura que el carrusel mantenga su alineación vertical en el centro */
+@media (min-width: 992px) { /* Ajusta el punto de interrupción según sea necesario */
+    #carouselExampleCaptions {
+        margin-top: 50px; /* Ajusta este valor según sea necesario para centrar verticalmente */
+    }
+}
+
+@media (min-width: 576px) { /* Small devices (landscape phones, 576px and up) */
+ .carousel-caption h5 { font-size: 1.3em;}
+ .carousel-caption p {font-size: 1.1em;}  
+}
+
+@media (min-width: 768px) {/* Medium devices (tablets, 768px and up) */
+ .carousel-caption h5 { font-size: 1.4em;}
+ .carousel-caption p {font-size: 1.2em;}  
+}
+
+@media (min-width: 992px) { /* Large devices (desktops, 992px and up) */
+ .carousel-caption h5 { font-size: 1.5em;}
+ .carousel-caption p {font-size: 1.3em;}  
+}
+
+@media (min-width: 1200px) { /* Extra large devices (large desktops, 1200px and up) */
+ .carousel-caption h5 { font-size: 1.6em;}
+ .carousel-caption p {font-size: 1.4em;}  
+}
