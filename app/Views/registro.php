@@ -9,7 +9,7 @@
       <?php if (isset($validation) && $validation->hasError('nombre')): ?>
         <div class='alert alert-danger mt-2'><?= $validation->getError('nombre'); ?></div>
       <?php endif; ?>
-      <form method="post" action="<?= site_url('usuarios/guardar') ?>">
+      <form method="post" action="<?= site_url('enviar-form') ?>">
         <div class="card-body justify-content-center" media="(max-width:768px)">
           <div class="mb-3">
             <label for="nombre" class="form-label">Nombre</label>
