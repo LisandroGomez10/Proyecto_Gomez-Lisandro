@@ -46,8 +46,9 @@
               <div class='alert alert-danger mt-2'><?= $validation->getError('pass'); ?></div>
             <?php endif; ?>
           </div>
+          <input type="hidden" name="perfil_id" value="2">
           <input type="submit" value="Guardar" class="btn btn-success">
-          <a href="<?= site_url('usuarios/lista') ?>" class="btn btn-danger">Cancelar</a>
+          <a href="<?= site_url('login') ?>" class="btn btn-danger">Cancelar</a>
           <input type="reset" value="Borrar" class="btn btn-secondary">
         </div>
       </form>

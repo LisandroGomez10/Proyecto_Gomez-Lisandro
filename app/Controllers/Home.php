@@ -60,11 +60,7 @@ class Home extends BaseController
 
     public function registro()
     {
-        echo view('head'); 
-        echo view('titulo');
-        echo view('navbar');
-        echo view('registro');
-        echo view('footer');
+        return view('registro');
     }
 
     public function login()

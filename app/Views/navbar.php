@@ -80,6 +80,9 @@ foreach ($carrito as $item) {
           <a class="nav-link me-3" href="<?= base_url('compras') ?>">Mis Compras</a>
         </li>
         <li class="nav-item">
+          <a class="nav-link me-3" href="<?= base_url('perfil') ?>">Mi Perfil</a>
+        </li>
+        <li class="nav-item">
           <a class="nav-link me-3" href="<?= base_url('logout') ?>">Cerrar Sesión</a>
         </li>
         <li class="nav-item">
@@ -94,6 +97,7 @@ foreach ($carrito as $item) {
       <a class="dropdown-item" href="<?= base_url('comercializacion') ?>">Comercialización</a>
       <a class="dropdown-item" href="<?= base_url('carrito/ver') ?>">Carrito</a>
       <a class="dropdown-item" href="<?= base_url('compras') ?>">Mis Compras</a>
+      <a class="dropdown-item" href="<?= base_url('perfil') ?>">Mi Perfil</a>
       <a class="dropdown-item" href="<?= base_url('logout') ?>">Cerrar Sesión</a>
       <a class="dropdown-item" href="<?= base_url('terminosdeuso') ?>">Términos de Uso</a>
     </div>

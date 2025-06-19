@@ -1,7 +1,7 @@
 <?= $this->extend('layouts/template') ?>
 <?= $this->section('contenido') ?>
 <div class="container mt-2 mb-5 d-flex justify-content-center">
-    <div class="card" style="width: 50%;">
+    <div class="card w-100" style="max-width: 500px;">
       <div class="card-header text-center">
         <h2>Agregar Usuario</h2>
       </div>
@@ -53,9 +53,11 @@
               <div class='alert alert-danger mt-2'><?= $validation->getError('perfil_id'); ?></div>
             <?php endif; ?>
           </div>
-          <input type="submit" value="Guardar" class="btn btn-success">
-          <a href="<?= site_url('usuarios/lista') ?>" class="btn btn-danger">Cancelar</a>
-          <input type="reset" value="Borrar" class="btn btn-secondary">
+          <div class="d-flex flex-column flex-md-row gap-2 mt-3">
+            <input type="submit" value="Guardar" class="btn btn-success w-100">
+            <a href="<?= site_url('usuarios/lista') ?>" class="btn btn-danger w-100">Cancelar</a>
+            <input type="reset" value="Borrar" class="btn btn-secondary w-100">
+          </div>
         </div>
       </form>
     </div>

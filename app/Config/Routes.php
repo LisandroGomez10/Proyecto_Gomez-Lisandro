@@ -118,6 +118,8 @@ $routes->get('detalle_venta/pdf/(:num)', 'DetalleCompraController::pdf/$1');
 // ---------- RUTA POR DEFECTO (opcional) ----------
 //$routes->get('/', 'ProductoController::index'); // Home redirige al catálogo
 
+$routes->get('perfil', 'usuario_controller::perfil');
+$routes->post('perfil/actualizar', 'usuario_controller::actualizarPerfil');
 
 
 

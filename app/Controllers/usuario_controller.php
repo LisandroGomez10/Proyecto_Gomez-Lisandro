@@ -21,14 +21,10 @@ class usuario_controller extends BaseController
         ];
 
         if (!$this->validate($rules)) {
-            // Si no pasa la validación, mostrar formulario
-            $data['titulo'] = 'Registro';
-            $data['validation'] = $this->validator;
-
-            echo view('head', $data);
-            echo view('navbar');
-            echo view('registro', $data);
-            echo view('footer');
+            // Si no pasa la validación, mostrar formulario SOLO con return view (no echo view)
+            return view('registro', [
+                'validation' => $this->validator
+            ]);
         } else {
             // Si pasa validación, guardar usuario
             $usuarioModel = new usuario_Model();
@@ -40,7 +36,7 @@ class usuario_controller extends BaseController
                 'email'      => $this->request->getVar('email'),
                 'pass'       => password_hash($this->request->getVar('pass'), PASSWORD_DEFAULT),
                 'perfil_id'  => 2, // Valor por defecto si aplica
-                'baja'       => 0  // Usuario activo por defecto
+                'baja'       => 'NO'  // Usuario activo por defecto
             ]);
 
             return redirect()->to('/login');
@@ -84,7 +80,7 @@ class usuario_controller extends BaseController
             'email'      => $this->request->getVar('email'),
             'pass'       => password_hash($this->request->getVar('pass'), PASSWORD_DEFAULT),
             'perfil_id'  => $this->request->getVar('perfil_id'),
-            'baja'       => 0
+            'baja'       => 'NO'
         ]);
         return redirect()->to('/usuarios/lista');
     }
@@ -136,7 +132,7 @@ class usuario_controller extends BaseController
         ];
         if (!$esAdmin) {
             $data['perfil_id'] = $this->request->getVar('perfil_id');
-            $data['baja'] = $this->request->getVar('baja') ?? 0;
+            $data['baja'] = $this->request->getVar('baja') ?? 'NO';
         }
         if ($this->request->getVar('pass')) {
             $data['pass'] = password_hash($this->request->getVar('pass'), PASSWORD_DEFAULT);
@@ -156,7 +152,7 @@ class usuario_controller extends BaseController
         if ($usuario['perfil_id'] == 1) {
             return redirect()->to('/usuarios/lista')->with('error', 'No se puede dar de baja a un usuario administrador.');
         }
-        $usuarioModel->update($id, ['baja' => 1]);
+        $usuarioModel->update($id, ['baja' => 'SI']);
         return redirect()->to('/usuarios/lista');
     }
 
@@ -167,7 +163,54 @@ class usuario_controller extends BaseController
         if (!$usuario) {
             throw \CodeIgniter\Exceptions\PageNotFoundException::forPageNotFound("Usuario con ID $id no encontrado");
         }
-        $usuarioModel->update($id, ['baja' => 0]);
+        $usuarioModel->update($id, ['baja' => 'NO']);
         return redirect()->to('/usuarios/lista');
+    }
+
+    public function perfil()
+    {
+        $idUsuario = session()->get('id_usuario');
+        $usuarioModel = new usuario_Model();
+        $usuario = $usuarioModel->find($idUsuario);
+        if (!$usuario) {
+            return redirect()->to('/')->with('error', 'Usuario no encontrado.');
+        }
+        return view('perfil', ['usuario' => $usuario]);
+    }
+
+    public function actualizarPerfil()
+    {
+        $idUsuario = session()->get('id_usuario');
+        $usuarioModel = new usuario_Model();
+        $usuario = $usuarioModel->find($idUsuario);
+        if (!$usuario) {
+            return redirect()->to('/')->with('error', 'Usuario no encontrado.');
+        }
+        $rules = [
+            'nombre'   => 'required|min_length[3]',
+            'apellido' => 'required|min_length[3]',
+            'usuario'  => 'required',
+            'email'    => 'required|valid_email',
+        ];
+        if (!$this->validate($rules)) {
+            return view('perfil', [
+                'usuario' => $usuario,
+                'validation' => $this->validator
+            ]);
+        }
+        $data = [
+            'nombre'   => $this->request->getPost('nombre'),
+            'apellido' => $this->request->getPost('apellido'),
+            'usuario'  => $this->request->getPost('usuario'),
+            'email'    => $this->request->getPost('email'),
+        ];
+        $pass = $this->request->getPost('pass');
+        if (!empty($pass)) {
+            $data['pass'] = password_hash($pass, PASSWORD_DEFAULT);
+        }
+        $usuarioModel->update($idUsuario, $data);
+        // Actualizar datos en sesión si es necesario
+        session()->set($data);
+        return redirect()->to('perfil')->with('success', 'Perfil actualizado correctamente.');
     }
 }
